@@ -16,3 +16,10 @@ $(document).ready(function () {
         });
     });
 });
+function startVideo() {
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
+}

@@ -347,7 +347,7 @@
              
                 <!-- blog section start -->
               
-                <div class="background-container1" onmouseover="playVideo()" onmouseout="pauseVideo()" onclick="startVideo()">
+                <div class="background-container1" onclick="startVideo()">
                     <div class="content">
                         <h1>See our video</h1>
                         <video id="myVideo" playsinline loop width="80%" height="50%" >
@@ -973,7 +973,9 @@
                 <div class="col-lg-3 col-md-6">
                     <!-- <h4 class="text-white mb-4">Our Office</h4>
                     <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p> -->
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 9699844397</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 9699844397</p> 
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i><a href="mailto:heayuressence@gmail.com">theayuressence@gmail.com</a></p>
+                    
 
                     </div>
                     <div class="col-lg-3 col-md-6 text-center">
@@ -1051,6 +1053,46 @@
 
 
     <!-- Template Javascript -->
+    <script>
+        // Get the video element
+        var video = document.getElementById("myVideo");
+    
+        // Options for the Intersection Observer
+        var options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.5 // Trigger when 50% of the video is visible
+        };
+    
+        // Callback function to handle the intersection changes
+        function handleIntersection(entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    // Video is now visible, play it
+                    playVideo();
+                } else {
+                    // Video is not visible, pause it
+                    pauseVideo();
+                }
+            });
+        }
+    
+        // Create the Intersection Observer with the callback and options
+        var observer = new IntersectionObserver(handleIntersection, options);
+    
+        // Start observing the video element
+        observer.observe(video);
+    
+        // Function to play the video
+        function playVideo() {
+            video.play();
+        }
+    
+        // Function to pause the video
+        function pauseVideo() {
+            video.pause();
+        }
+    </script>
     <script src="js/main.js"></script>
 </body>
 
